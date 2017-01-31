@@ -15,36 +15,36 @@ function toChineseNumeral(num){
 		10:"十",
 		100:"百",
 		1000:"千",
-		10000:"萬"
+		10000:"萬",
+		100000000:"億",
+		1000000000000:"兆"
 	};
-
-	var result = '';
-	var neg = num < 0;
-	num = Math.abs(num);
-	arr = (num+'').split('.');
-	arr[0] = arr[0].split('');
-	while(arr[0].length > 0) {
-		var t = arr[0].shift();
-		var digit = Math.pow(10, arr[0].length);
-		if (t !== '0' || result.length === 0)
-			result += `${digit === 10 && t === '1' && result.length === 0 ? '' : numerals[t]}${digit > 1 ? numerals[digit]:''}`;
-		else if (t === '0' && result.substr(result.length-1) != numerals[t])
-			result += numerals[t];
+	
+	if (num < 0) {
+		return numerals['-'] + toChineseNumeral(-num);
+	} else if (num < 1) {
+		return num.toString().split('').reduce(function(p, n) {
+			return p + numerals[n];
+		}, '');
+	} else if (num > Math.floor(num)) {
+		return toChineseNumeral(Math.floor(num)) + toChineseNumeral(parseFloat(num.toString().replace(/^.*\./, '0.'))).slice(1);
+	} else {
+		return [1000000000000, 100000000, 10000, 1000, 100, 10, 1].reduce(function(p, n) {
+			if (num >= n) {
+				if (p.ling) p.ch += numerals[0];				
+				var t = Math.floor(num / n);
+				p.ch += t < 10 ? numerals[t] : toChineseNumeral(Math.floor(num / n));
+				if (n != 1) p.ch += numerals[n];
+				p.ling = false;
+			} else if (p.ch) {
+				p.ling = true;
+			}
+			num %= n;
+			return p;
+		}, {ch: '', ling: false}).ch.replace(/^一十/, '十');
 	}
-	if (result.substr(result.length-1) === numerals['0'] && result.length > 1)
-		result = result.substring(0, result.length-1);
-	if (arr.length > 1) {
-		result += numerals['.'];
-		arr[1] = arr[1].split('');
-		while(arr[1].length > 0) {
-			result += numerals[arr[1].shift()];
-		}
-	}
-	if (neg) {
-		result = numerals['-'] + result;
-	}
-
-	return result;
 }
 
 module.exports.toChineseNumeral = toChineseNumeral;
+
+// console.log(toChineseNumeral(99999999.999));

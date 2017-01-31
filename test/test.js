@@ -70,4 +70,13 @@ describe('toChineseNumeral', function() {
         assert.equal('九萬九千九百九十九點九九九', main.toChineseNumeral(99999.999));
         assert.equal('負九萬九千九百九十九點九九九', main.toChineseNumeral(-99999.999));
     });
+    it('Extra cases',function(){
+        assert.equal('十萬', main.toChineseNumeral(100000));
+        assert.equal('一百萬', main.toChineseNumeral(1000000));
+        assert.equal('一千二百三十四萬五千六百七十八', main.toChineseNumeral(12345678));
+        assert.equal('一億', main.toChineseNumeral(100000000));
+        assert.equal('九千八百七十六億五千四百三十二萬一千零一十二', main.toChineseNumeral(987654321012));
+        assert.equal('一兆', main.toChineseNumeral(1000000000000));
+        assert.equal('九千九百九十九兆九千九百九十九億九千九百九十九萬九千九百九十', main.toChineseNumeral(9999999999999990));
+    });
 });
