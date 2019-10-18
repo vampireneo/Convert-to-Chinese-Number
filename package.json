@@ -3,18 +3,17 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "test": "mocha"
+    "test": "jest"
   },
   "author": "Neo Choi",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^6.2.2"
+    "jest": "^24.9.0"
   },
   "directories": {
     "test": "test"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "description": "Covert number to Chinese",
   "keywords": [
     "Chinese",
