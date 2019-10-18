@@ -1,4 +1,4 @@
-function toChineseNumeral(num) {
+const toChineseNumeral = (num) => {
   const numerals = {
     '-': '負',
     '.': '點',
@@ -34,9 +34,7 @@ function toChineseNumeral(num) {
   if (num > Math.floor(num)) {
     return (
       toChineseNumeral(Math.floor(num)) +
-      toChineseNumeral(parseFloat(num.toString().replace(/^.*\./, '0.'))).slice(
-        1
-      )
+      toChineseNumeral(parseFloat(num.toString().replace(/^.*\./, '0.'))).slice(1)
     );
   }
 
@@ -61,5 +59,3 @@ function toChineseNumeral(num) {
 }
 
 module.exports.toChineseNumeral = toChineseNumeral;
-
-// console.log(toChineseNumeral(99999999.999));
