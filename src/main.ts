@@ -1,25 +1,29 @@
-const toChineseNumeral = (num) => {
-  const numerals = {
-    '-': '負',
-    '.': '點',
-    0: '零',
-    1: '一',
-    2: '二',
-    3: '三',
-    4: '四',
-    5: '五',
-    6: '六',
-    7: '七',
-    8: '八',
-    9: '九',
-    10: '十',
-    100: '百',
-    1000: '千',
-    10000: '萬',
-    100000000: '億',
-    1000000000000: '兆'
-  };
+type Test = {
+  [key: string | number]: string;
+};
 
+const numerals: Test = {
+  '-': '負',
+  '.': '點',
+  0: '零',
+  1: '一',
+  2: '二',
+  3: '三',
+  4: '四',
+  5: '五',
+  6: '六',
+  7: '七',
+  8: '八',
+  9: '九',
+  10: '十',
+  100: '百',
+  1000: '千',
+  10000: '萬',
+  100000000: '億',
+  1000000000000: '兆',
+};
+
+export const toChineseNumeral = (num: number): string => {
   if (num < 0) {
     return numerals['-'] + toChineseNumeral(-num);
   }
@@ -34,7 +38,9 @@ const toChineseNumeral = (num) => {
   if (num > Math.floor(num)) {
     return (
       toChineseNumeral(Math.floor(num)) +
-      toChineseNumeral(parseFloat(num.toString().replace(/^.*\./, '0.'))).slice(1)
+      toChineseNumeral(parseFloat(num.toString().replace(/^.*\./, '0.'))).slice(
+        1
+      )
     );
   }
 
@@ -56,6 +62,4 @@ const toChineseNumeral = (num) => {
       { ch: '', ling: false }
     )
     .ch.replace(/^一十/, '十');
-}
-
-module.exports.toChineseNumeral = toChineseNumeral;
+};

@@ -1,20 +1,27 @@
 {
-  "name": "chinese-number",
+  "name": "convert-to-chinese-number",
   "version": "1.0.0",
+  "description": "Covert number to Chinese",
   "main": "main.js",
   "scripts": {
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
+  "repository": {
+    "url": "https://github.com/vampireneo/Convert-to-Chinese-Number"
+  },
   "author": "Neo Choi",
   "license": "MIT",
   "devDependencies": {
     "@vitest/coverage-v8": "^0.34.6",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
     "vitest": "^0.34.6"
   },
-  "description": "Covert number to Chinese",
   "keywords": [
     "Chinese",
-    "Number"
+    "Number",
+    "Convert",
+    "Neo"
   ]
 }
