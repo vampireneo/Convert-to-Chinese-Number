@@ -1,6 +1,6 @@
 {
   "name": "convert-to-chinese-number",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Covert number to Chinese",
   "main": "./dist/main.js",
   "module": "./dist/main.mjs",
@@ -14,7 +14,7 @@
     "coverage": "vitest run --coverage"
   },
   "repository": {
-    "url": "https://github.com/vampireneo/Convert-to-Chinese-Number"
+    "url": "git+https://github.com/vampireneo/Convert-to-Chinese-Number.git"
   },
   "author": "Neo Choi",
   "license": "MIT",
