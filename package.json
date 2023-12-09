@@ -13,7 +13,8 @@
     "build": "tsup",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "ci:publish": "pnpm publish -r"
+    "ci:publish": "pnpm publish -r",
+    "ci:version": "pnpm changeset version"
   },
   "repository": {
     "url": "git+https://github.com/vampireneo/Convert-to-Chinese-Number.git"
