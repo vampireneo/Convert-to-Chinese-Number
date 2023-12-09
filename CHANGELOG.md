@@ -1,5 +1,11 @@
 # convert-to-chinese-number
 
+## 1.2.1
+
+### Patch Changes
+
+- af5f9c9: minor update
+
 ## 1.2.0
 
 ### Minor Changes
