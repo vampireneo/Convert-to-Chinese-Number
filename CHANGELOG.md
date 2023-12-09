@@ -1,5 +1,11 @@
 # convert-to-chinese-number
 
+## 1.0.2
+
+### Patch Changes
+
+- 60842b1: update workflow
+
 ## 1.0.1
 
 ### Patch Changes
