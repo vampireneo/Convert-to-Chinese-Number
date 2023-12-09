@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "@vampireneo/convert-to-chinese-number"
+      "repo": "vampireneo/Convert-to-Chinese-Number"
     }
   ],
   "commit": false,
