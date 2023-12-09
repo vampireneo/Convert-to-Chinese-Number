@@ -1,5 +1,11 @@
 # convert-to-chinese-number
 
+## 1.1.4
+
+### Patch Changes
+
+- 394dbb6: Automate changeset
+
 ## 1.1.3
 
 ### Patch Changes
