@@ -1,5 +1,11 @@
 # convert-to-chinese-number
 
+## 1.1.2
+
+### Patch Changes
+
+- Update README
+
 ## 1.1.1
 
 ### Patch Changes
