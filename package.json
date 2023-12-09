@@ -1,9 +1,9 @@
 {
-  "name": "convert-to-chinese-number",
-  "version": "1.1.0",
+  "name": "@vampireneo/convert-to-chinese-number",
+  "version": "1.1.1",
   "description": "Covert number to Chinese",
-  "main": "./dist/main.js",
-  "module": "./dist/main.mjs",
+  "main": "./dist/main.cjs",
+  "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "type": "module",
   "files": [
@@ -17,11 +17,19 @@
   "repository": {
     "url": "git+https://github.com/vampireneo/Convert-to-Chinese-Number.git"
   },
+  "homepage": "https://github.com/vampireneo/Convert-to-Chinese-Number",
+  "bugs": {
+    "url": "https://github.com/vampireneo/Convert-to-Chinese-Number/issues"
+  },
   "author": "Neo Choi",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
     "@vitest/coverage-v8": "^1.0.2",
-    "ts-node": "^10.9.1",
+    "eslint": "^8.55.0",
+    "ts-node": "^10.9.2",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "vitest": "^1.0.2"
@@ -30,6 +38,8 @@
     "Chinese",
     "Number",
     "Convert",
-    "Neo"
+    "Neo",
+    "中文",
+    "數字"
   ]
 }
