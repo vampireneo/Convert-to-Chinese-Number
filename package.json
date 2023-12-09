@@ -13,7 +13,7 @@
     "build": "tsup",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "ci:publish": "pnpm publish -r --access public --no-git-checks",
+    "ci:publish": "pnpm publish -r --access public",
     "ci:version": "pnpm changeset version"
   },
   "repository": {
