@@ -1,6 +1,6 @@
 {
   "name": "@vampireneo/convert-to-chinese-number",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Covert number to Chinese",
   "main": "./dist/main.cjs",
   "module": "./dist/main.js",
