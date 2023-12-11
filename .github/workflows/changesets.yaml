@@ -43,6 +43,8 @@ jobs:
         run: pnpm config set store-dir $PNPM_CACHE_FOLDER
       - name: install dependencies
         run: pnpm install
+      - name: build
+        run: pnpm build
       - name: create and publish versions
         uses: changesets/action@v1
         with:
@@ -50,6 +52,5 @@ jobs:
           commit: 'chore: update versions'
           title: 'chore: update versions'
           publish: pnpm ci:publish
-          createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
