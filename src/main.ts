@@ -23,6 +23,21 @@ const numerals: Test = {
   1000000000000: '兆',
 }
 
+const financialNumerals: Test = {
+  一: '壹',
+  二: '貳',
+  三: '叄',
+  四: '肆',
+  五: '伍',
+  六: '陸',
+  七: '柒',
+  八: '捌',
+  九: '玖',
+  十: '拾',
+  百: '佰',
+  千: '仟',
+}
+
 export const toChineseNumeral = (num: number): string => {
   if (num < 0) {
     return numerals['-'] + toChineseNumeral(-num)
@@ -63,3 +78,9 @@ export const toChineseNumeral = (num: number): string => {
     )
     .ch.replace(/^一十/, '十')
 }
+
+export const toChineseFinancialNumeral = (num: number): string =>
+  Object.keys(financialNumerals).reduce(
+    (p, c) => p.replace(new RegExp(c, 'g'), financialNumerals[c]),
+    toChineseNumeral(num)
+  )
