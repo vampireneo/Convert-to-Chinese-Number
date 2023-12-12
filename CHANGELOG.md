@@ -1,5 +1,11 @@
 # convert-to-chinese-number
 
+## 1.1.1
+
+### Patch Changes
+
+- [`8525045`](https://github.com/vampireneo/Convert-to-Chinese-Number/commit/8525045230d940aa072eb3a4907723f8f0108d6e) - Add keywords in package.json
+
 ## 1.1.0
 
 ### Minor Changes
