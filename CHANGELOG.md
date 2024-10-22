@@ -1,5 +1,11 @@
 # convert-to-chinese-number
 
+## 1.1.5
+
+### Patch Changes
+
+- [#57](https://github.com/vampireneo/Convert-to-Chinese-Number/pull/57) [`9ca7219`](https://github.com/vampireneo/Convert-to-Chinese-Number/commit/9ca721900ba343a64d609bd38ad564a65da5e102) Thanks [@vampireneo](https://github.com/vampireneo)! - Nothing changed, just refactoring
+
 ## 1.1.4
 
 ### Patch Changes
