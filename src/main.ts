@@ -1,8 +1,8 @@
-type Test = {
+type ChineseNumeralMap = {
   [key: string | number]: string
 }
 
-const numerals: Test = {
+const numerals: ChineseNumeralMap = {
   '-': '負',
   '.': '點',
   0: '零',
@@ -23,7 +23,7 @@ const numerals: Test = {
   1000000000000: '兆',
 }
 
-const financialNumerals: Test = {
+const financialNumerals: ChineseNumeralMap = {
   一: '壹',
   二: '貳',
   三: '叄',
@@ -38,7 +38,7 @@ const financialNumerals: Test = {
   千: '仟',
 }
 
-export const toChineseNumeral = (num: number): string => {
+const toChineseNumeral = (num: number): string => {
   if (num < 0) {
     return numerals['-'] + toChineseNumeral(-num)
   }
@@ -51,11 +51,10 @@ export const toChineseNumeral = (num: number): string => {
   }
 
   if (num > Math.floor(num)) {
+    const [integerPart, decimalPart] = num.toString().split('.')
     return (
-      toChineseNumeral(Math.floor(num)) +
-      toChineseNumeral(parseFloat(num.toString().replace(/^.*\./, '0.'))).slice(
-        1
-      )
+      toChineseNumeral(parseInt(integerPart)) +
+      toChineseNumeral(parseFloat(`.${decimalPart}`)).slice(1)
     )
   }
 
@@ -63,24 +62,26 @@ export const toChineseNumeral = (num: number): string => {
     .reduce(
       (p, n) => {
         if (num >= n) {
-          if (p.ling) p.ch += numerals[0]
+          if (p.zeroFlag) p.ch += numerals[0]
           const t = Math.floor(num / n)
           p.ch += t < 10 ? numerals[t] : toChineseNumeral(Math.floor(num / n))
           if (n !== 1) p.ch += numerals[n]
-          p.ling = false
+          p.zeroFlag = false
         } else if (p.ch) {
-          p.ling = true
+          p.zeroFlag = true
         }
         num %= n
         return p
       },
-      { ch: '', ling: false }
+      { ch: '', zeroFlag: false }
     )
     .ch.replace(/^一十/, '十')
 }
 
-export const toChineseFinancialNumeral = (num: number): string =>
+const toChineseFinancialNumeral = (num: number): string =>
   Object.keys(financialNumerals).reduce(
     (p, c) => p.replace(new RegExp(c, 'g'), financialNumerals[c]),
     toChineseNumeral(num)
   )
+
+export { toChineseNumeral, toChineseFinancialNumeral }
