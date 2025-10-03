@@ -39,6 +39,14 @@ const financialNumerals: ChineseNumeralMap = {
 }
 
 const toChineseNumeral = (num: number): string => {
+  if (Number.isNaN(num)) {
+    throw new TypeError('Input must be a finite number')
+  }
+
+  if (!Number.isFinite(num)) {
+    return '無限'
+  }
+
   if (num < 0) {
     return numerals['-'] + toChineseNumeral(-num)
   }

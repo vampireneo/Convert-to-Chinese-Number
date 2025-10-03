@@ -72,6 +72,8 @@ describe('toChineseNumeral', () => {
     expect(toChineseNumeral(-10.000001)).toBe('負十點零零零零零一')
     expect(toChineseNumeral(99999.999)).toBe('九萬九千九百九十九點九九九')
     expect(toChineseNumeral(-99999.999)).toBe('負九萬九千九百九十九點九九九')
+    expect(toChineseNumeral(Infinity)).toBe('無限')
+    expect(() => toChineseNumeral(Number.NaN)).toThrow(TypeError)
   })
   test('Extra cases', () => {
     expect(toChineseNumeral(100000)).toBe('十萬')
