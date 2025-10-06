@@ -1,18 +1,41 @@
 # Convert to Chinese Number
 
-A function that convert numbers to Chinese numerals.
+Convert-to-Chinese-Number is a tiny utility for transforming ordinary numbers
+into traditional Chinese numerals. It supports both everyday numerals (小寫)
+and financial numerals (大寫), handles decimals and negative values out of the
+box, and can be used from either JavaScript or TypeScript projects.
+
+## Features
+
+- 🔢 Convert integers and decimal numbers into written Chinese numerals.
+- 💰 Financial (大寫) output for invoices, cheques, and other official
+  documents.
+- ➖ Supports negative numbers and preserves decimal precision.
+- 🪶 Zero-dependency package that works in Node.js and modern bundlers.
 
 ## Installation
 
-Using npm:
+Using **npm**:
 
 ```bash
-npm i @vampireneo/convert-to-chinese-number
+npm install @vampireneo/convert-to-chinese-number
 ```
 
-## Usage
+Using **pnpm**:
 
-```js
+```bash
+pnpm add @vampireneo/convert-to-chinese-number
+```
+
+Using **yarn**:
+
+```bash
+yarn add @vampireneo/convert-to-chinese-number
+```
+
+## Quick start
+
+```ts
 import {
   toChineseNumeral,
   toChineseFinancialNumeral,
@@ -27,19 +50,30 @@ console.log(toChineseFinancialNumeral(24681)) // 貳萬肆仟陸佰捌拾壹
 console.log(toChineseFinancialNumeral(-53665.65)) // 負伍萬叄仟陸佰陸拾伍點陸伍
 ```
 
-## API
+Both helpers accept `number` values and return the converted string.
 
-### toChineseNumeral(num)
+## API reference
 
-Convert a number to ordinary numerals (小寫)
+### `toChineseNumeral(num: number): string`
 
-### toChineseFinancialNumeral(num)
+Converts the supplied `num` into everyday Chinese numerals (小寫). The returned
+string is suitable for common written communication.
 
-Convert a number to financial numerals (大寫)
+### `toChineseFinancialNumeral(num: number): string`
 
-## Known Issue
+Converts the supplied `num` into Chinese financial numerals (大寫). The returned
+string is appropriate for financial documents that require the formal style.
 
-Numbers that larger than 1000000000000 may have problem.
+## Limits and caveats
+
+- Numbers larger than `1_000_000_000_000` (one trillion) may not convert
+  correctly.
+- JavaScript numbers lose precision beyond `Number.MAX_SAFE_INTEGER`, so large
+  inputs may not reflect their exact value after conversion.
+
+## Contributing
+
+Bug reports and pull requests are welcome on [GitHub](https://github.com/vampireneo/convert-to-chinese-number).
 
 ## License
 
