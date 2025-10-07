@@ -47,6 +47,13 @@ describe('toChineseNumeral', () => {
     expect(toChineseNumeral(0.0625)).toBe('零點零六二五')
     expect(toChineseNumeral(0.03125)).toBe('零點零三一二五')
   })
+  test('Scientific notation numbers', () => {
+    expect(toChineseNumeral(1e-3)).toBe('零點零零一')
+    expect(toChineseNumeral(5e-5)).toBe('零點零零零零五')
+    expect(toChineseNumeral(-2.5e-6)).toBe('負零點零零零零零二五')
+    expect(toChineseNumeral(1e3)).toBe('一千')
+    expect(toChineseNumeral(5e6)).toBe('五百萬')
+  })
   test('Special Cases', () => {
     expect(toChineseNumeral(14)).toBe('十四')
     expect(toChineseNumeral(18)).toBe('十八')
@@ -138,6 +145,13 @@ describe('toChineseFinancialNumeral', () => {
     expect(toChineseFinancialNumeral(0.125)).toBe('零點壹貳伍')
     expect(toChineseFinancialNumeral(0.0625)).toBe('零點零陸貳伍')
     expect(toChineseFinancialNumeral(0.03125)).toBe('零點零叄壹貳伍')
+  })
+  test('Scientific notation numbers', () => {
+    expect(toChineseFinancialNumeral(1e-3)).toBe('零點零零壹')
+    expect(toChineseFinancialNumeral(5e-5)).toBe('零點零零零零伍')
+    expect(toChineseFinancialNumeral(-2.5e-6)).toBe('負零點零零零零零貳伍')
+    expect(toChineseFinancialNumeral(1e3)).toBe('壹仟')
+    expect(toChineseFinancialNumeral(5e6)).toBe('伍佰萬')
   })
   test('Special Cases', () => {
     expect(toChineseFinancialNumeral(14)).toBe('拾肆')

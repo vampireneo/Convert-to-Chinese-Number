@@ -38,6 +38,32 @@ const financialNumerals: ChineseNumeralMap = {
   千: '仟',
 }
 
+const expandScientificNotation = (value: number): string => {
+  const numStr = Math.abs(value).toString()
+
+  if (!/[eE]/.test(numStr)) {
+    return numStr
+  }
+
+  const [mantissa, exponentPart] = numStr.split(/[eE]/)
+  const exponent = Number(exponentPart)
+  const digits = mantissa.replace('.', '')
+  const decimalDigits = mantissa.includes('.')
+    ? mantissa.length - mantissa.indexOf('.') - 1
+    : 0
+  const pointIndex = digits.length + exponent - decimalDigits
+
+  if (pointIndex <= 0) {
+    return `0.${'0'.repeat(-pointIndex)}${digits}`
+  }
+
+  if (pointIndex >= digits.length) {
+    return `${digits}${'0'.repeat(pointIndex - digits.length)}`
+  }
+
+  return `${digits.slice(0, pointIndex)}.${digits.slice(pointIndex)}`
+}
+
 const toChineseNumeral = (num: number): string => {
   if (Number.isNaN(num)) {
     throw new TypeError('Input must be a finite number')
@@ -52,17 +78,20 @@ const toChineseNumeral = (num: number): string => {
   }
 
   if (num < 1) {
-    return num
-      .toString()
+    const normalized = expandScientificNotation(num)
+
+    return normalized
       .split('')
       .reduce((p, n) => p + numerals[n], '')
   }
 
   if (num > Math.floor(num)) {
-    const [integerPart, decimalPart] = num.toString().split('.')
+    const [integerPart, decimalPart = ''] = expandScientificNotation(num).split('.')
     return (
       toChineseNumeral(parseInt(integerPart)) +
-      toChineseNumeral(parseFloat(`.${decimalPart}`)).slice(1)
+      (decimalPart
+        ? toChineseNumeral(parseFloat(`.${decimalPart}`)).slice(1)
+        : '')
     )
   }
 
